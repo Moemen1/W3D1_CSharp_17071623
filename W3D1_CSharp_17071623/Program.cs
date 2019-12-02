@@ -23,7 +23,8 @@ namespace W3D1_CSharp_17071623
                               "Hieronder worden de diverse opties weergegeven. \n");
 
             Console.WriteLine("1: Categorie \n" +
-                              "2: Moelijkheidsgraad \n");
+                              "2: Moelijkheidsgraad \n" +
+                              "3: Exit \n");
 
             Console.Write("Waar wilt u op filteren?: ");
 

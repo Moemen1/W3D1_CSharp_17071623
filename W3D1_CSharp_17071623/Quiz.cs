@@ -15,11 +15,11 @@ namespace W3D1_CSharp_17071623
         }
 
         public void KiesCategorieOfMoelijkheid(int input)
-        {
-            int i = 1;
-
+        {          
             if (input == 1)
             {
+                int i = 1;
+
                 foreach (Vraag v in VragenList.Distinct())
                 {
                     Console.WriteLine($"{i}: {v.Categorie}");
@@ -30,12 +30,9 @@ namespace W3D1_CSharp_17071623
             }
             else if (input == 2)
             {
-                Console.WriteLine($"Moelijkheidsgraad: 1, 2, 3 \n");
+                Console.WriteLine("Moelijkheidsgraad: 1, 2, 3 \n");
             }
-            else
-            {
-                Console.WriteLine("Deze optie bestaat niet. \n");
-            }
+            else { return; }       
         }
 
         public void FilterMoeilijkheid()
@@ -44,18 +41,17 @@ namespace W3D1_CSharp_17071623
             int input = Int32.Parse(Console.ReadLine());
             Console.WriteLine();
 
-            var vragenBijInput = from v in VragenList
-                where v.Moeilijkheidsgraad == input
-                select v;
+            //LINQ filter op moeilijkheid
+            var vragenBijMoeilijkheid = VragenList.Where(v => v.Moeilijkheidsgraad == input).ToList();         
 
             int i = 1;
-            foreach (Vraag v in vragenBijInput)
+            foreach (Vraag v in vragenBijMoeilijkheid)
             {
                 Console.WriteLine($"{i}: {v}");
                 i++;
-            }
+            }            
 
-            Kiesvraag(vragenBijInput, i);
+            KiesVraag(vragenBijMoeilijkheid);
         }
 
         public void FilterCategorie()
@@ -65,40 +61,31 @@ namespace W3D1_CSharp_17071623
             string input = Console.ReadLine();
             Console.WriteLine();
 
-            var vragenBijInput = from v in VragenList
-                where v.Categorie.ToLowerInvariant() == input.ToLowerInvariant()
-                select v;
+            //LINQ filter op categorie
+            var vragenBijCategorie = VragenList.Where(v => v.Categorie.ToLower() == input.ToLower()).ToList();           
 
             int i = 1;
-            foreach (Vraag v in vragenBijInput)
+            foreach (Vraag v in vragenBijCategorie)
             {
                 Console.WriteLine($"{i}: {v}");
                 i++;
             }
 
-            Kiesvraag(vragenBijInput, i);
+            KiesVraag(vragenBijCategorie);
         }
 
-        public void Kiesvraag(IEnumerable<Vraag> vragenBijInput, int i)
+        public void KiesVraag(List<Vraag> vragenBijInput)
         {
             Console.WriteLine();
             Console.Write("Kies een vraag: ");
             int input = Int32.Parse(Console.ReadLine());
 
-            Vraag gekozenVraag = null;
-
-            foreach (Vraag v in vragenBijInput)
-            {
-                if(input == i)
-                    Console.WriteLine(v);
-
-                gekozenVraag = v;
-            }
+            Vraag gekozenVraag = vragenBijInput[input - 1];
 
             Console.Write("Jouw antwoord: ");
             string antwoord = Console.ReadLine();
-            Console.WriteLine(gekozenVraag.CheckAnswer(antwoord));
-        }
 
+            Console.WriteLine("Het antwoord is: " + gekozenVraag.CheckAnswer(antwoord));
+        }      
     }
 }
