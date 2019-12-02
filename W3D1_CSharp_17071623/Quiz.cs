@@ -32,7 +32,7 @@ namespace W3D1_CSharp_17071623
             {
                 Console.WriteLine("Moelijkheidsgraad: 1, 2, 3 \n");
             }
-            else { return; }       
+            /*else { return; } */      
         }
 
         public void FilterMoeilijkheid()

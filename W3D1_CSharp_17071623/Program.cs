@@ -13,10 +13,11 @@ namespace W3D1_CSharp_17071623
         {
             Quiz q = new Quiz();
 
-            q.AddVraag(new Vraag(1, "Wat is 10 + 10?", "20", "Optellen"));
-            q.AddVraag(new Vraag(1, "Wat is 20 + 10?", "30", "Optellen"));
-            q.AddVraag(new Vraag(3, "In which country was the inventor of Java born?", "United States", "Programmeren"));
+            q.AddVraag(new Vraag(1, "Wat is 100 + 110?", "210", "Rekenen"));
+            q.AddVraag(new Vraag(1, "Wat is 540 - 105?", "435", "Rekenen"));
+            q.AddVraag(new Vraag(2, "In which country was the inventor of Python born?", "Netherlands", "Programmeren"));
             q.AddVraag(new Vraag(2, "In which country was the inventor of C# born?", "Denmark", "Programmeren"));
+            q.AddVraag(new Vraag(3, "In which country was the inventor of Java born?", "United States", "Programmeren"));
 
             Console.WriteLine("Welkom bij de Quiz! \n" +
                               "Voordat we beginnen moet je filteren op categorie of moeilijkheidsgraad. \n" +
@@ -38,7 +39,8 @@ namespace W3D1_CSharp_17071623
             {
                 q.FilterCategorie();
 
-            } else if (input == 2)
+            }
+            else if (input == 2)
             {
                 q.FilterMoeilijkheid();
             }
