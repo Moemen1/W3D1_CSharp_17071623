@@ -6,8 +6,7 @@ namespace W3D1_CSharp_17071623
 {
     class KeuzeVraag : Vraag
     {
-        public List<String> KeuzeList;
-
+        public List<string> KeuzeList;
 
         public KeuzeVraag(int moeilijkheidsgraad, string tekst, string antwoord, string categorie) : base(moeilijkheidsgraad, tekst, antwoord, categorie)
         {
@@ -16,7 +15,6 @@ namespace W3D1_CSharp_17071623
 
         public void AddChoice(string keuze, bool correct)
         {
-
             KeuzeList.Add(keuze);
 
             if (correct)
@@ -29,11 +27,34 @@ namespace W3D1_CSharp_17071623
         public void Display()
         {
             int i = 1;
+
             foreach (string keuze in KeuzeList)
             {
                 Console.WriteLine($"{i}: {keuze}");
                 i++;
             }
+        }
+
+        public override string ToString()
+        {
+            int i = 1;
+            var sb = new StringBuilder();
+
+            sb.Append(Tekst);
+            sb.Append("\n------------------------");
+
+            if (KeuzeList.Count != 0)
+            {                
+                foreach(string keuze in KeuzeList)
+                {
+                    sb.Append(String.Format("\n{0}: {1}", i, keuze));
+                    i++;
+                }
+                sb.Append("\n------------------------");
+                return sb.ToString() + "\n";
+            }           
+
+            return sb.ToString() + "\n";
         }
     }
 }

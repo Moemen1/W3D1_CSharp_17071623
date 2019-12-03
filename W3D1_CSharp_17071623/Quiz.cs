@@ -7,15 +7,15 @@ namespace W3D1_CSharp_17071623
 {
     class Quiz
     {
-        List<Vraag> VragenList = new List<Vraag>();   
+        List<Vraag> VragenList = new List<Vraag>();          
 
         public void AddVraag(Vraag v)
         {
             VragenList.Add(v);
         }
-
+     
         public void KiesCategorieOfMoelijkheid(int input)
-        {          
+        {           
             if (input == 1)
             {
                 int i = 1;
