@@ -23,27 +23,32 @@ namespace W3D1_CSharp_17071623
                               "Voordat we beginnen moet je filteren op categorie of moeilijkheidsgraad. \n" +
                               "Hieronder worden de diverse opties weergegeven. \n");
 
-            Console.WriteLine("1: Categorie \n" +
-                              "2: Moelijkheidsgraad \n" +
-                              "3: Exit \n");
-
-            Console.Write("Waar wilt u op filteren?: ");
-
-            int input = Int32.Parse(Console.ReadLine());
-
-            Console.WriteLine();
-
-            q.KiesCategorieOfMoelijkheid(input);
-
-            if (input == 1)
+            while (true)
             {
-                q.FilterCategorie();
+                Console.WriteLine("1: Categorie \n" +
+                                              "2: Moelijkheidsgraad \n" +
+                                              "3: Exit \n");
 
+                Console.Write("Waar wilt u op filteren?: ");
+
+                int input = Int32.Parse(Console.ReadLine());
+
+                Console.WriteLine();
+
+                q.KiesCategorieOfMoelijkheid(input);
+
+                if (input == 1)
+                {
+                    q.FilterCategorie();
+                }
+                else if (input == 2)
+                {
+                    q.FilterMoeilijkheid();
+                }
+
+                Console.WriteLine();
             }
-            else if (input == 2)
-            {
-                q.FilterMoeilijkheid();
-            }
+            
         }
     }
 }

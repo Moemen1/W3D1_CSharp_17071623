@@ -7,7 +7,7 @@ namespace W3D1_CSharp_17071623
 {
     class Quiz
     {
-        List<Vraag> VragenList = new List<Vraag>();
+        List<Vraag> VragenList = new List<Vraag>();   
 
         public void AddVraag(Vraag v)
         {
@@ -32,7 +32,7 @@ namespace W3D1_CSharp_17071623
             {
                 Console.WriteLine("Moelijkheidsgraad: 1, 2, 3 \n");
             }
-            /*else { return; } */      
+            else { Environment.Exit(0); }      
         }
 
         public void FilterMoeilijkheid()
